@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom'; 
+import JoblyApi from "./JoblyApi";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     async function fetchJobs() {
-      const result = await axios.get('/jobs');
-      setJobs(result.data.jobs);
+      try {
+        const jobs = await JoblyApi.getJobs();
+        setJobs(jobs);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
     }
     fetchJobs();
   }, []);
@@ -17,7 +22,9 @@ function Jobs() {
       <h1>Jobs</h1>
       <ul>
         {jobs.map(job => (
-          <li key={job.id}>{job.title}</li>
+          <li key={job.id}>
+            <Link to={`/jobs/${job.id}`}>{job.title}</Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
+import JoblyApi from './JoblyApi';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -10,11 +9,26 @@ function Signup() {
     lastName: '',
     email: ''
   });
+  const [error, setError] = useState(null);
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const result = await axios.post('/auth/register', formData);
-    console.log(result.data.token);
+    setError(null); // Clear previous errors
+
+    // Basic validation to ensure all fields are filled
+    for (let key in formData) {
+      if (formData[key] === '') {
+        setError(`The ${key} field is required.`);
+        return;
+      }
+    }
+
+    try {
+      const token = await JoblyApi.register(formData);
+      console.log(token);
+    } catch (err) {
+      setError(err);
+    }
   }
 
   function handleChange(evt) {
@@ -63,6 +77,7 @@ function Signup() {
         onChange={handleChange}
       />
       <button>Signup</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>
   );
 }

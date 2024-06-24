@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
+import JoblyApi from './JoblyApi';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -8,8 +7,12 @@ function Login() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    const result = await axios.post('/auth/token', { username, password });
-    console.log(result.data.token);
+    try {
+      const token = await JoblyApi.login({ username, password });
+      console.log(token);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   }
 
   return (

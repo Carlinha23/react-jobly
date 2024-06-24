@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import JoblyApi from "./JoblyApi";
 
 
 function Companies() {
@@ -8,9 +8,14 @@ function Companies() {
 
   useEffect(() => {
     async function fetchCompanies() {
-      const result = await axios.get('/companies');
-      setCompanies(result.data.companies);
+      try {
+        const companies = await JoblyApi.getCompanies();
+        setCompanies(companies);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }
     }
+    
     fetchCompanies();
   }, []);
 

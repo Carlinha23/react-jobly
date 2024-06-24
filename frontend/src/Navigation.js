@@ -24,6 +24,9 @@ function NavBar() {
           <NavItem>
              <NavLink to="/signup">Signup</NavLink>
           </NavItem>
+          <NavItem>
+             <NavLink to="/profile">Profile</NavLink>
+          </NavItem>
         </Nav>
       </Navbar>
     </div>
