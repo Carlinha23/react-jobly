@@ -84,17 +84,29 @@ class JoblyApi {
   }
 
   /** Update user profile. */
-    static async updateUser(username, data) {
-        try {
-        let res = await axios.patch(`${BASE_URL}/users/${username}`, data);
-        return res.data.user;
-            } catch (err) {
+  static async updateUser(username, data) {
+    try {
+      let res = await axios.patch(`${BASE_URL}/users/${username}`, data, {
+        headers: { Authorization: `Bearer ${JoblyApi.token}` }
+      });
+      return res.data.user;
+    } catch (err) {
       console.error("API Error:", err.response.data);
-        throw err.response.data.error.message;
-        }
+      throw err.response.data.error.message;
+    }
 
     
     }
+
+    static async getUserProfile(username) {
+        try {
+          let res = await this.request(`users/${username}`); // Adjust the endpoint as per your API
+          return res.user; // Assuming the response structure includes `user` field
+        } catch (err) {
+          console.error("API Error:", err.response.data);
+          throw err.response.data.error.message;
+        }
+      }
   // obviously, you'll add a lot here ...
 }
 

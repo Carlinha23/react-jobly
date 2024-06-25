@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import JoblyApi from './JoblyApi';
+import React, { useState, useContext } from 'react';
+import { UserContext } from './UserContext';
 
 function Login() {
+  const { login } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      const token = await JoblyApi.login({ username, password });
-      console.log(token);
+      await login({ username, password });
     } catch (error) {
       console.error("Error during login:", error);
     }
@@ -35,3 +35,4 @@ function Login() {
 }
 
 export default Login;
+

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import JoblyApi from './JoblyApi';
+import React, { useState, useContext } from 'react';
+import { UserContext } from './UserContext';
 
 function Signup() {
+  const { signup } = useContext(UserContext);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -13,9 +14,8 @@ function Signup() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    setError(null); // Clear previous errors
+    setError(null);
 
-    // Basic validation to ensure all fields are filled
     for (let key in formData) {
       if (formData[key] === '') {
         setError(`The ${key} field is required.`);
@@ -24,8 +24,7 @@ function Signup() {
     }
 
     try {
-      const token = await JoblyApi.register(formData);
-      console.log(token);
+      await signup(formData);
     } catch (err) {
       setError(err);
     }
@@ -83,3 +82,4 @@ function Signup() {
 }
 
 export default Signup;
+

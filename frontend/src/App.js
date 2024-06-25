@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { UserProvider } from './UserContext'; // Import UserProvider
+import { UserProvider } from './UserContext'; 
 import Signup from './Signup';
 import Login from './Login';
 import Home from './Home';
@@ -9,11 +9,13 @@ import JobDetails from './JobDetails';
 import Companies from './Companies';
 import CompanyDetails from './CompanyDetails';
 import Profile from './Profile';
+import NavBar from './Navigation';
 
 function App() {
   return (
     <UserProvider>
       <BrowserRouter> {/* Wrap entire app with BrowserRouter */}
+        <NavBar />
         <Switch>
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
