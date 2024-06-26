@@ -3,7 +3,7 @@ import {jwtDecode} from 'jwt-decode';
 import JoblyApi from './JoblyApi';
 
 
-export const UserContext = createContext(); // Exporting UserContext as named export
+export const UserContext = createContext(); 
 
 export function UserProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
@@ -59,7 +59,7 @@ export function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ currentUser, login, signup, logout }}>
+    <UserContext.Provider value={{  currentUser, setUser: setCurrentUser, login, signup, logout  }}>
       {children}
     </UserContext.Provider>
   );

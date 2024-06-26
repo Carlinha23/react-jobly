@@ -3,9 +3,8 @@ import JoblyApi from './JoblyApi';
 import { UserContext } from './UserContext';
 
 function Profile() {
-  const { user, setUser } = useContext(UserContext);
+  const { currentUser, setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
-    username: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -15,15 +14,16 @@ function Profile() {
   const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
-    if (user) {
+    if (currentUser) {
       setFormData({
-        username: user.username,
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        email: user.email || ''
+        firstName: currentUser.firstName || '',
+        lastName: currentUser.lastName || '',
+        email: currentUser.email || '',
+        password: ''
       });
     }
-  }, [user]);
+  }, [currentUser]);
+
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -31,11 +31,21 @@ function Profile() {
     setSuccessMessage('');
 
     try {
-      const updatedUser = await JoblyApi.updateUser(user.username, formData);
+      // Log the form data before sending
+      console.log('Form Data:', formData);
+
+      // Remove password from formData if it is empty
+      const updateData = { ...formData };
+      if (!updateData.password) {
+        delete updateData.password;
+      }
+
+      const updatedUser = await JoblyApi.updateUser(currentUser.username, updateData);
       setUser(updatedUser);
       setSuccessMessage('Profile updated successfully!');
     } catch (err) {
-      setError(err);
+      console.error('Error updating profile:', err);
+      setError(err.message || 'Error updating profile');
     }
   }
 
@@ -47,7 +57,7 @@ function Profile() {
     }));
   }
 
-  if (!user) {
+  if (!currentUser) {
     return <div>Loading...</div>;
   }
 
@@ -55,13 +65,6 @@ function Profile() {
     <div>
       <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          readOnly
-        />
         <label>First Name</label>
         <input
           type="text"
