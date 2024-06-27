@@ -107,6 +107,24 @@ class JoblyApi {
           throw err.response.data.error.message;
         }
       }
+
+    // Add this method to the JoblyApi class
+    static async applyToJob(username, jobId) {
+     try {
+        let res = await axios.post(
+            `${BASE_URL}/users/${username}/jobs/${jobId}`,
+            {},
+            {
+            headers: { Authorization: `Bearer ${JoblyApi.token}` }
+            }
+        );
+        return res;
+        } catch (err) {
+        console.error("API Error:", err.response.data);
+        throw err.response.data.error.message;
+        }
+    }
+  
   // obviously, you'll add a lot here ...
 }
 

@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  /* Profile Page Styles */
+  .profile-page {
+    padding: 20px;
+  }
+  
+  .profile-page h1 {
+    margin-bottom: 20px;
+  }
+  
+  .profile-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-page label {
+    margin: 10px 0 5px;
+  }
+  
+  .profile-page input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .profile-page button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .profile-page button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-page p {
+    margin: 10px 0;
+  }
+  
+  /* Job Details Page Styles */
+  .job-details {
+    padding: 20px;
+  }
+  
+  .job-details h1 {
+    margin-bottom: 20px;
+  }
+  
+  .job-details p {
+    margin: 10px 0;
+  }
+  
+  .job-details .company-details {
+    margin-top: 20px;
+  }
+  
+  .job-details .company-details img {
+    max-width: 100px;
+    margin-top: 10px;
+  }
+  
+  .job-details button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .job-details button:disabled {
+    background-color: #6c757d;
+  }
+  
+  .job-details button:hover:not(:disabled) {
+    background-color: #218838;
+  }
+  
+  /* Login Form Styles */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .login-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-form label {
+    margin: 10px 0 5px;
+  }
+  
+  .login-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Success and Error Messages */
+  .success-message {
+    color: green;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  

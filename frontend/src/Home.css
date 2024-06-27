@@ -1,0 +1,19 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f2f5; /* Light grey background */
+    text-align: center; /* Center-align text */
+  }
+  
+  .welcome-message {
+    font-size: 32px; /* Large font size */
+    color:  #650253; /* Dark text color */
+    font-weight: bold; /* Bold text */
+    padding: 20px; /* Padding around the message */
+    background-color: #ffffff; /* White background for the message */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  }
+  

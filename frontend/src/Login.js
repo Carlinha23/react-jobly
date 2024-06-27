@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './UserContext';
+import './Login.css';
 
 function Login() {
   const { login } = useContext(UserContext);
@@ -16,21 +17,23 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Username</label>
-      <input
-        type="text"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <button>Login</button>
-    </form>
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <label>Username</label>
+        <input
+          type="text"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 }
 

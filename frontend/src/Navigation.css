@@ -1,0 +1,45 @@
+/* NavBar.css */
+
+.navbar-custom {
+    background-color: #7e0469; /* Dark background color */
+    padding: 10px 20px; /* Padding around the navbar */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between brand and nav items */
+    align-items: center; /* Center align items vertically */
+  }
+  
+  .navbar-brand-custom {
+    color: #ffffff; /* White color for the brand link */
+    font-size: 24px; /* Larger font size for the brand link */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+  }
+  
+  .navbar-brand-custom:hover {
+    color: #cccccc; /* Slightly lighter color on hover */
+  }
+  
+  .nav-items-right {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center align items vertically */
+  }
+  
+  .nav-link-custom {
+    color: #ffffff; /* White color for navigation links */
+    font-size: 18px; /* Font size for navigation links */
+    margin: 0 10px; /* Margin between navigation links */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .nav-link-custom:hover {
+    color: #cccccc; /* Slightly lighter color on hover */
+  }
+  
+  .navbar-custom .ml-auto {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center align items vertically */
+  }
+  
+  .navbar-custom .nav-item {
+    list-style: none; /* Remove the dot symbol */
+  }

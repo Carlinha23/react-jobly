@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './UserContext';
+import './Signup.css';
 
 function Signup() {
   const { signup } = useContext(UserContext);
@@ -39,47 +40,50 @@ function Signup() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Username</label>
-      <input
-        type="text"
-        name="username"
-        value={formData.username}
-        onChange={handleChange}
-      />
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <label>First Name</label>
-      <input
-        type="text"
-        name="firstName"
-        value={formData.firstName}
-        onChange={handleChange}
-      />
-      <label>Last Name</label>
-      <input
-        type="text"
-        name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
-      />
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <button>Signup</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </form>
+    <div className="signup-container">
+      <form onSubmit={handleSubmit} className="signup-form">
+        <label>Username</label>
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <label>First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+        />
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+        />
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <button type="submit">Signup</button>
+        {error && <p className="error">{error}</p>}
+      </form>
+    </div>
   );
 }
+
 
 export default Signup;
 
